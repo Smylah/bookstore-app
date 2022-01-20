@@ -8,21 +8,21 @@ const FooterPage = () => {
         <div className="p-2">
           <a href="#!">
             <span>
-              <i class="fab fa-twitter"></i>
+              <i className="fab fa-twitter fa-1x"></i>
             </span>
           </a>
         </div>
         <div className="p-2">
           <a href="#!">
             <span>
-              <i class="fas fa-phone"></i>
+              <i className="fas fa-phone fa-1x"></i>
             </span>
           </a>
         </div>
         <div className="p-2">
           <a href="#!">
             <span>
-              <i class="fas fa-at"></i>
+              <i className="fas fa-at fa-1x"></i>
             </span>
           </a>
         </div>
