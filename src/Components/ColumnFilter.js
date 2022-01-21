@@ -5,7 +5,7 @@ export const ColumnFilter = ({ column }) => {
   return (
     <span>
       <select
-        className="form-select"
+        className="form-select btn btn-outline-light text-dark"
         value={filter}
         onChange={(e) => setFilter(e.target.value)}
       >

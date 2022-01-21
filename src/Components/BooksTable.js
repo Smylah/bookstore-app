@@ -8,11 +8,11 @@ import {
 } from "react-table"
 import BOOKLIST from "./BOOKLIST.json"
 import { COLUMNS } from "./columns"
-import "./table.css"
+
 import CheckBox from "./CheckBox"
-import GlobalFilter from "./GlobalFilter"
 
 export var Sum
+export var selectedFlatRows
 export var selectedBooks
 
 const BooksTable = () => {
@@ -24,7 +24,7 @@ const BooksTable = () => {
     getTableBodyProps,
     headerGroups,
     page,
-    setGlobalFilter,
+
     nextPage,
     previousPage,
     canNextPage,
@@ -63,7 +63,7 @@ const BooksTable = () => {
     }
   )
 
-  const { globalFilter, pageIndex, pageSize } = state
+  const { pageIndex, pageSize } = state
 
   Sum = selectedFlatRows
     .map((row) => row.original["Price"])
@@ -73,9 +73,7 @@ const BooksTable = () => {
   selectedBooks = selectedFlatRows.length
 
   return (
-    <div className="p-5">
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
-
+    <div className="p-5 ">
       <span>
         <h3 className="text-end">
           Cart
@@ -90,7 +88,7 @@ const BooksTable = () => {
         </h3>
       </span>
 
-      <table {...getTableProps()}>
+      <table className="table table-striped" {...getTableProps()}>
         <thead>
           {headerGroups.map((headerGroup) => (
             <tr {...headerGroup.getHeaderGroupProps()}>
@@ -144,7 +142,7 @@ const BooksTable = () => {
           />
         </span>
         <select
-          className="col m-2"
+          className="col-2"
           value={pageSize}
           onChange={(e) => setPageSize(Number(e.target.value))}
         >
@@ -154,35 +152,36 @@ const BooksTable = () => {
             </option>
           ))}
         </select>
-
-        <button
-          className="btn btn-secondary btn-sm col m-auto"
-          onClick={() => gotoPage(0)}
-          disabled={!canPreviousPage}
-        >
-          {"<<"}
-        </button>
-        <button
-          className="btn btn-secondary btn-sm col m-auto"
-          onClick={() => previousPage()}
-          disabled={!canPreviousPage}
-        >
-          {"<"}Prev
-        </button>
-        <button
-          className="btn btn-secondary btn-sm col m-auto"
-          onClick={() => nextPage()}
-          disabled={!canNextPage}
-        >
-          Next{">"}
-        </button>
-        <button
-          className="btn btn-secondary btn-sm col m-auto"
-          onClick={() => gotoPage(pageCount - 1)}
-          disabled={!canNextPage}
-        >
-          {">>"}
-        </button>
+        <div className="col-4">
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => gotoPage(0)}
+            disabled={!canPreviousPage}
+          >
+            {"<<"}
+          </button>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => previousPage()}
+            disabled={!canPreviousPage}
+          >
+            {"<"}Prev
+          </button>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => nextPage()}
+            disabled={!canNextPage}
+          >
+            Next{">"}
+          </button>
+          <button
+            className="btn btn-secondary btn-sm"
+            onClick={() => gotoPage(pageCount - 1)}
+            disabled={!canNextPage}
+          >
+            {">>"}
+          </button>
+        </div>
       </div>
     </div>
   )

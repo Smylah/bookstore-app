@@ -2,8 +2,8 @@ import React from "react"
 
 const FooterPage = () => {
   return (
-    <footer className="p-4 bg-dark text-white">
-      <div className="d-flex flex-row mt-2 justify-content-center">
+    <footer className="bg-dark text-white fixed-bottom-flexible ">
+      <div className="d-flex flex-row mt-2 mb-auto justify-content-center">
         <div className="p-2">Contact Me:</div>
         <div className="p-2">
           <a href="#!">
